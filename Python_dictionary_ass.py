@@ -47,9 +47,17 @@ def populate_celebrities(nested_list):
 
 populate_celebrities(list)
 
-# this code allows me to display the the dictionary in an orderly fashion
-for key, profile in celebrities.items():
+# Sort celebrities profiles using  name using  alphabetical order
+sorted_celebrities = dict(sorted(celebrities.items(), key=lambda item: item[1]['name']))
+
+sorted_profiles = {}
+for index, (key, profile) in enumerate(sorted_celebrities.items(), start=1):
+    new_key = f"profile-{index}"
+    sorted_profiles[new_key] = profile
+
+
+for key, profile in sorted_profiles.items():
     print(f"{key}:")
     for attribute, value in profile.items():
         print(f"  {attribute}: {value}")
-    print()  
+    print()
